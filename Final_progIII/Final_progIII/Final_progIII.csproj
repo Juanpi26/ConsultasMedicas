@@ -134,6 +134,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Medicos.cs" />
     <Compile Include="Models\MedicosContext.cs" />
+    <Compile Include="Models\Pacientes.cs" />
+    <Compile Include="Models\Prueba.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
