@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,110 +8,109 @@ using System.Web;
 using System.Web.Mvc;
 using Final_progIII.Models;
 
-
 namespace Final_progIII.Controllers
 {
-    public class MedicosController : Controller
+    public class PacientesController : Controller
     {
         private MedicosContext db = new MedicosContext();
 
-        // GET: Medicos
+        // GET: Pacientes
         public ActionResult Index()
         {
-            return View(db.Medicoss.ToList());
+            return View(db.Pacientess.ToList());
         }
 
-        // GET: Medicos/Details/5
+        // GET: Pacientes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicos medicos = db.Medicoss.Find(id);
-            if (medicos == null)
+            Pacientes pacientes = db.Pacientess.Find(id);
+            if (pacientes == null)
             {
                 return HttpNotFound();
             }
-            return View(medicos);
+            return View(pacientes);
         }
 
-        // GET: Medicos/Create
+        // GET: Pacientes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Medicos/Create
+        // POST: Pacientes/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Exequatur,Especialidad")] Medicos medicos)
+        public ActionResult Create([Bind(Include = "Id,Cedula,Nombre,Asegurado")] Pacientes pacientes)
         {
             if (ModelState.IsValid)
             {
-                db.Medicoss.Add(medicos);
+                db.Pacientess.Add(pacientes);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(medicos);
+            return View(pacientes);
         }
 
-        // GET: Medicos/Edit/5
+        // GET: Pacientes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicos medicos = db.Medicoss.Find(id);
-            if (medicos == null)
+            Pacientes pacientes = db.Pacientess.Find(id);
+            if (pacientes == null)
             {
                 return HttpNotFound();
             }
-            return View(medicos);
+            return View(pacientes);
         }
 
-        // POST: Medicos/Edit/5
+        // POST: Pacientes/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Exequatur,Especialidad")] Medicos medicos)
+        public ActionResult Edit([Bind(Include = "Id,Cedula,Nombre,Asegurado")] Pacientes pacientes)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(medicos).State = EntityState.Modified;
+                db.Entry(pacientes).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(medicos);
+            return View(pacientes);
         }
 
-        // GET: Medicos/Delete/5
+        // GET: Pacientes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medicos medicos = db.Medicoss.Find(id);
-            if (medicos == null)
+            Pacientes pacientes = db.Pacientess.Find(id);
+            if (pacientes == null)
             {
                 return HttpNotFound();
             }
-            return View(medicos);
+            return View(pacientes);
         }
 
-        // POST: Medicos/Delete/5
+        // POST: Pacientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Medicos medicos = db.Medicoss.Find(id);
-            db.Medicoss.Remove(medicos);
+            Pacientes pacientes = db.Pacientess.Find(id);
+            db.Pacientess.Remove(pacientes);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -13,6 +13,7 @@ namespace Final_progIII.Models
         {
         }
         public DbSet<Medicos> Medicoss { get; set; }
+
         public DbSet<Pacientes> Pacientess { get; set; }
 
     }
